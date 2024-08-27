@@ -1,7 +1,17 @@
 ﻿Console.WriteLine("🔢 Welcome to the Number Guessing Game!❓");
+
+const int secretNumber = 42;
    
 int guess = GetValidIntegerInput("Guess a Secret number ");
-Console.WriteLine($"🎯 You guessed: {guess}");
+
+if (guess == secretNumber)
+{
+    Console.WriteLine("🎉 Congratulations! You guessed the correct number!");
+}
+else
+{
+    Console.WriteLine("😢 Sorry, that's not the correct number. Try again!"); 
+}
 
 
 int GetValidIntegerInput(string prompt)

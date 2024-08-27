@@ -1,18 +1,35 @@
 ﻿Console.WriteLine("🔢 Welcome to the Number Guessing Game!❓");
 
-const int secretNumber = 42;
-   
-int guess = GetValidIntegerInput("Guess a Secret number ");
+int secretNumber = 42;
+int maxTries = 4;
+int tries = 0;
+bool isCorrect = false;
 
-if (guess == secretNumber)
+while (tries < maxTries && !isCorrect)
 {
-    Console.WriteLine("🎉 Congratulations! You guessed the correct number!");
-}
-else
-{
-    Console.WriteLine("😢 Sorry, that's not the correct number. Try again!"); 
+    int guess = GetValidIntegerInput("Guess a Secret number ");
+    tries++;
+    if (guess == secretNumber)
+    {
+        Console.WriteLine("🎉 Congratulations! You guessed the correct number!");
+        isCorrect = true;
+    }
+    else
+    {
+        // Show remaining attempts
+        if (tries < maxTries)
+        {
+            Console.WriteLine("😢 Sorry, that's not the correct number. Try again!"); 
+            Console.WriteLine($"You have {maxTries - tries} {(maxTries - tries > 1 ? "chances" : "chance")} left.");
+        }
+    }
 }
 
+// If the guess was never correct
+if (!isCorrect)
+{
+    Console.WriteLine($"🔚 Out of attempts! The secret number was {secretNumber}. Better luck next time!");
+}
 
 int GetValidIntegerInput(string prompt)
 {

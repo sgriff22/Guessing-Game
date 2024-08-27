@@ -2,7 +2,8 @@
 int level = GetValidIntegerInput(@"What difficulty level do you want?
 1. Easy (8 Chances)
 2. Medium (6 Chances)
-3. Hard (4 Chances)", 1, 3);
+3. Hard (4 Chances)
+4. Cheater (Unlimited Chances)", 1, 4);
 
 int maxTries;
 switch (level)
@@ -15,7 +16,10 @@ switch (level)
         break;
     case 3:
         maxTries = 4;
-        break;  
+        break; 
+    case 4:
+        maxTries = int.MaxValue;
+        break; 
     default:
         throw new ArgumentOutOfRangeException();  
 }
@@ -77,13 +81,13 @@ int GetValidIntegerInput(string prompt, int? min = null, int? max = null)
         {
             if (min != null && min !=null)
             {
-                if (int.Parse(input) >= min && int.Parse(input) <= 3)
+                if (int.Parse(input) >= min && int.Parse(input) <= 4)
                 {
                     return int.Parse(input);
                 }
                 else
                 {
-                    Console.WriteLine("❌ Invalid input. Please enter a number between 1 and 3.");
+                    Console.WriteLine("❌ Invalid input. Please enter a number between 1 and 4.");
                 }
             }
             else
